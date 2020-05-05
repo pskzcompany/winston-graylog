@@ -17,7 +17,7 @@ npm install winston @pskzcompany/winston-graylog
 
 ```ts
 import winston from 'winston';
-import WinstonGraylog from '@pskzcompany/winston-graylog';
+import { WinstonGraylog } from '@pskzcompany/winston-graylog';
 
 const logger = winston.createLogger({
   exitOnError: false,

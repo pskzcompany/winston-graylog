@@ -1,2 +1,4 @@
+import { WinstonGraylog } from './winstonGraylog';
+
 export * from './winstonGraylog';
-export default Graylog;
+export default WinstonGraylog;
