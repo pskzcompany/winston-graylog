@@ -50,9 +50,9 @@ logger.error(new Error('Some error'), { duration: 26 });
 - **handleExceptions**: Boolean flag, whenever to handle uncaught exceptions. (default: false)
 - **exceptionsLevel**: Level of exceptions logs when handleExceptions is true. (default: error)
 - **graylog**:
-  - **connection string**: gelf://10.0.0.1:12201,10.0.0.2:12201?hostname=host&facility=Node.js&bufferSize=1400&deflate=optimal
-  - **OR**
-  - **servers**; list of graylog2 servers
+  - `gelf://10.0.0.1:12201,10.0.0.2:12201?hostname=host&facility=Node.js&bufferSize=1400&deflate=optimal` – as connection string
+  - **- OR -**
+  - **servers**: list of graylog2 servers
     - **host**: your server address (default: localhost)
     - **port**: your server port (default: 12201)
   - **hostname**: the name of this host (default: os.hostname())
