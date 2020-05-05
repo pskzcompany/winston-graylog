@@ -26,7 +26,7 @@ jobs:
       - name: Lint & tscheck
         run: yarn lint
       - name: Tests
-        run: yarn test
+        run: yarn coverage
         env:
           CI: true
       - name: Build
