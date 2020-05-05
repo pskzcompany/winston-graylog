@@ -1,7 +1,17 @@
 import Transport, { TransportStreamOptions } from 'winston-transport';
 import Graylog, { GraylogOptions, GraylogLevelEnum } from '@pskzcompany/graylog';
 
-interface TransportOptions extends TransportStreamOptions {
+export type WinstonLevel =
+  | 'info'
+  | 'debug'
+  | 'notice'
+  | 'warning'
+  | 'error'
+  | 'crit'
+  | 'alert'
+  | 'emerg';
+
+export interface TransportOptions extends TransportStreamOptions {
   graylog: GraylogOptions;
   defaultMeta?: Record<string, any>;
 }

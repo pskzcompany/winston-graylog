@@ -21,7 +21,16 @@ import WinstonGraylog from '@pskzcompany/winston-graylog';
 
 const logger = winston.createLogger({
   exitOnError: false,
-  transports: [new WinstonGraylog(options)],
+  transports: [
+    new WinstonGraylog({
+      level: 'debug',
+      graylog: 'gelf://10.0.0.1:12201',
+      defaultMeta: {
+        environment: 'production',
+        release: '1.0.1',
+      },
+    }),
+  ],
 });
 
 logger.info({ message: 'info message', facility: 'Node.js' });
@@ -41,13 +50,15 @@ logger.error(new Error('Some error'), { duration: 26 });
 - **handleExceptions**: Boolean flag, whenever to handle uncaught exceptions. (default: false)
 - **exceptionsLevel**: Level of exceptions logs when handleExceptions is true. (default: error)
 - **graylog**:
+  - **connection string**: gelf://10.0.0.1:12201,10.0.0.2:12201?hostname=host&facility=Node.js&bufferSize=1400&deflate=optimal
+  - **OR**
   - **servers**; list of graylog2 servers
     - **host**: your server address (default: localhost)
     - **port**: your server port (default: 12201)
   - **hostname**: the name of this host (default: os.hostname())
   - **facility**: the facility for these log messages (default: "Node.js")
   - **bufferSize**: max UDP packet size, should never exceed the MTU of your system (default: 1400)
-- **defaultMeta**: meta data to be always used by default for each logging message. For instance environment (development, staging, live)
+- **defaultMeta**: meta data to be always used by default for each logging message.
 
 ## Lisence
 
