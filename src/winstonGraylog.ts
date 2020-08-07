@@ -29,7 +29,7 @@ export class WinstonGraylog extends Transport {
     this.defaultMeta = options.defaultMeta || {};
   }
 
-  log(info: any, next: Function) {
+  log(info: Record<string, any>, next: () => any): void {
     const { message, level, ...rest } = info;
     const metadata = { ...this.defaultMeta, ...rest };
     setImmediate(() => {
@@ -38,7 +38,7 @@ export class WinstonGraylog extends Transport {
     next();
   }
 
-  close() {
+  close(): void {
     this.graylog.close();
   }
 
